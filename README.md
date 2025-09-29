@@ -28,6 +28,8 @@ Tips på moduler/mappträd:
  - test_game.py 
  - test_highscore.py
  - test_utils.py
+- README.md
+- requirements.txt
 
 
 README - vad som ska stå
