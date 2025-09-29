@@ -28,6 +28,7 @@ Tips på moduler/mappträd:
  - test_utils.py
 
 
+README - vad som ska stå
 1. BESKRIVNING
 2. Installation:
 3. Körning:
