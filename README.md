@@ -16,14 +16,14 @@ Tips på externabibliotek:
 - requests - om vi vill använda en API
 
 Tips på moduler/mappträd:
-guess_number/
- main.py # CLI-start, starta/loopa-spel
- game.py # class game
- player.py # class player
- highscore.py # class HighScoreManager
- utils.py # småhjälp: validering, tidsformatering
+- guess_number/
+ - main.py # CLI-start, starta/loopa-spel
+ - game.py # class game
+ - player.py # class player
+ - highscore.py # class HighScoreManager
+ - utils.py # småhjälp: validering, tidsformatering
 tests/
- test_game.py 
- test_highscore.py
- test_utils.py
+ - test_game.py 
+ - test_highscore.py
+ - test_utils.py
 
