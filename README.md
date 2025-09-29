@@ -11,9 +11,11 @@ Tips på standardbibliotek:
 - datetime - mät speltid.
 - json - spara/läsa highscore
 
+
 Tips på externabibliotek:
 - rich / coloroma - för en lite roligare CLI - färga feedback ('För högt!' i rött, 'Rätt! i grönt)
 - requests - om vi vill använda en API
+
 
 Tips på moduler/mappträd:
 - guess_number/
@@ -33,6 +35,10 @@ README - vad som ska stå
 2. Installation:
 3. Körning:
 4. Filer & ansvar: Lista vem i gruppen som gjort vad
-5. Testning:
+5. Testning: PyTest
 6. Konfiguration: Var ligger highscores.json, hur byter man språk/tema, env-variabler (om vi använder API).
 
+
+VERSIONSHANTERING (Git/GitHub)
+- Arbetsflöde: skydda main-branch -> jobba i feature-branches (ex. feat/highscores), gör Pull Requests och code reviews.
+- Commits: Använd korta, meningsfulla meddelanden
