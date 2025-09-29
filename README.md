@@ -22,7 +22,7 @@ Tips på moduler/mappträd:
  - player.py # class player
  - highscore.py # class HighScoreManager
  - utils.py # småhjälp: validering, tidsformatering
-tests/
+- tests/
  - test_game.py 
  - test_highscore.py
  - test_utils.py
