@@ -27,3 +27,11 @@ Tips på moduler/mappträd:
  - test_highscore.py
  - test_utils.py
 
+
+1. BESKRIVNING
+2. Installation:
+3. Körning:
+4. Filer & ansvar: Lista vem i gruppen som gjort vad
+5. Testning:
+6. Konfiguration: Var ligger highscores.json, hur byter man språk/tema, env-variabler (om vi använder API).
+
