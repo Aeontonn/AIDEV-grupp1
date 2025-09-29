@@ -13,7 +13,7 @@ Tips på standardbibliotek:
 
 
 Tips på externabibliotek:
-- rich / coloroma - för en lite roligare CLI - färga feedback ('För högt!' i rött, 'Rätt! i grönt)
+- rich / colorama - för en lite roligare CLI - färga feedback ('För högt!' i rött, 'Rätt! i grönt)
 - requests - om vi vill använda en API
 
 
