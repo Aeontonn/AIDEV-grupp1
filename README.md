@@ -6,6 +6,15 @@ BESKRIVNING:
  Klasser som kan användas: game, player, highscore manager, random number, 
 
 
+
+
+Vem gör vad:
+Anton - game.py   # fixa till så att allt fungerar som det ska
+Nicklas - highscore.py
+
+
+
+
 Tips på standardbibliotek:
 - random - drar det hemliga talet.
 - datetime - mät speltid.
