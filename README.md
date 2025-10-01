@@ -39,7 +39,6 @@ README - vad som ska stå
 4. Filer & ansvar: Lista vem i gruppen som gjort vad
 5. Testning: PyTest
 6. Konfiguration: Var ligger highscores.json, hur byter man språk/tema, env-variabler (om vi använder API).
-7. Test
 
 
 VERSIONSHANTERING (Git/GitHub)
