@@ -55,3 +55,11 @@ README - vad som ska stå
 VERSIONSHANTERING (Git/GitHub)
 - Arbetsflöde: skydda main-branch -> jobba i feature-branches (ex. feat/highscores), gör Pull Requests och code reviews.
 - Commits: Använd korta, meningsfulla meddelanden
+
+ VERSION
+- 0.1 Tillägg av mappar för olika moduler/utilities etc. Bättre struktur, lägg gärna in filerna i respektive mapp
+-
+-
+-
+-
+
