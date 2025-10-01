@@ -58,7 +58,7 @@ VERSIONSHANTERING (Git/GitHub)
 
  VERSION
 - 0.1 Tillägg av mappar för olika moduler/utilities etc. Bättre struktur, lägg gärna in filerna i respektive mapp
--
+- 0.1.1 Strukturerade allting om lite granna, istället för att ha modules/game, modules/menu etc. så lägger vi .py filerna direkt i modules mappen, jag addade oxå __init__.py i mapparna då det kan vara bra och ha för de som använder äldre versioner av python.
 -
 -
 -
