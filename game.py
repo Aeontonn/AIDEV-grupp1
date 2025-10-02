@@ -1,4 +1,5 @@
 import random
+import Modules.get_number as get_number  # för om användaren skriver ett ord / bokstäver istället för en siffra
 
 highscore = []
 
@@ -13,7 +14,7 @@ while answer == "ja":
     print("Gissa talet!\nDu ska nu försöka att gissa talet mellan 1 och 100. Lycka till!")
 
     # för att få användarens tal.
-    user_num = int(input("\nSkriv in ett tal: "))
+    user_num = get_number.get_number("\nSkriv in ett tal: ")
 
     # koden för att kolla vilket tal och hur nära.
     while number != user_num:
@@ -24,6 +25,7 @@ while answer == "ja":
             if x > 10: # om de har gissat fler än 10 gånger så bryts spelet. (kan höjas eller sänkas senare)
                 break
             print("Du valde ett tal över 100. Välj ett nytt tal mellan 1 och 100.")
+            user_num = get_number.get_number("\nSkriv in ett nytt tal: ") # så att loopen inte fortsätter tills man förlorar om man gissar för högt nummer
         
         # ifall de skriver att tal under 1.
         elif user_num < 1:
@@ -31,6 +33,7 @@ while answer == "ja":
             if x > 10: # om de har gissat fler än 10 gånger så bryts spelet. (kan höjas eller sänkas senare)
                 break
             print("Du valde ett tal under 1. Välj ett nytt tal mellan 1 och 100.")
+            user_num = get_number.get_number("\nSkriv in ett nytt tal: ") # så att loopen inte fortsätter tills man förlorar om man gissar för lågt nummer
             
         elif user_num < number:
             x = x + 1
@@ -39,7 +42,7 @@ while answer == "ja":
             elif abs(user_num - number) <= 4: # för att kolla om gissningen är nära.
                 print("Du är nära men inte riktigt där!")
             print("Ditt tal är för litet.")
-            user_num = int(input("\nGissa ett större tal: "))
+            user_num = get_number.get_number("\nGissa ett större tal: ")
         
         elif user_num > number:
             x = x + 1
@@ -48,8 +51,9 @@ while answer == "ja":
             elif abs(user_num - number) <= 4:
                 print("Du är nära men inte riktigt där!")
             print("Ditt tal är för stort.")
-            user_num = int(input("\nGissa ett mindre tal: "))
-        else: 
+            user_num = get_number.get_number("\nGissa ett mindre tal: ")
+        else:
+            x = x + 1 
             break
     
     # om användaren gissade 10 gånger så avslutas spelet och skriver ut det här meddelandet.
