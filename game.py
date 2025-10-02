@@ -1,5 +1,5 @@
 import random
-import Modules.get_number as get_number  # för om användaren skriver ett ord / bokstäver istället för en siffra
+import modules.get_number as get_number  # för om användaren skriver ett ord / bokstäver istället för en siffra
 
 highscore = []
 
