@@ -89,3 +89,17 @@ class HighScoreManager:
         # indent=2 gör filen mer läsbar för människor.
         with self.path.open('w', encoding='utf-8') as f:
             json.dump(payload, f, ensure_ascii=False, indent=2)
+            
+    def _sort_scores(self) -> None:
+        '''
+        Sortera highscore-listan efter minst antal försök (ascending).
+        - färre "attempts" = bättre resultat.
+        - begränsar listan till self.keep_max poster.
+        '''
+        
+        # sorterar listan baserat på attempts, lägst först.
+        self._scores.sort(key=lambda x: x['attempts'])
+        
+        # kapa listan om den är längre än keep_max
+        if len(self._scores) > self.keep_max:
+            self._scores = self._scores[:self.keep_max]
