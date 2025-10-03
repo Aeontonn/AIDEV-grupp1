@@ -12,6 +12,7 @@ Vem gör vad:
 - Anton - game.py   # fixa till så att allt fungerar som det ska
 - Nicklas - highscore.py
 - Ali - player.py
+- Constantine - main.py
 
 
 
