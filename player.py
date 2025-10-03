@@ -2,8 +2,9 @@ import abc
 import json
 import os
 
-# Sökväg till filen där användardata lagras
-DATA_DIR = os.path.join("aidev-grupp1", "data")
+# Sökväg till filen där användardata lagras (fixad version)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # mappen där player.py ligger
+DATA_DIR = os.path.join(BASE_DIR, "data")
 USER_FILE = os.path.join(DATA_DIR, "users.json")
 
 # Se till att mappen finns
