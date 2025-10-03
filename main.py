@@ -1,30 +1,53 @@
-#Importing all the necessary modules/functions that are needed for the program to work
+#Importing all the necessary modules/functions/libraries that are needed for the program to work
 from main.modules.users import create_username
-from main.modules.game import superduperguess_game
-from main.modules.scores import show_scoreboard
-from main.modules.menu import display_menu
-from main.utilities.coloricons import print_color, Colors
+from main.modules.game import guessing_game
+from main.modules.scores import show_highscores
+from rich.console import Console
+from rich.prompt import Prompt
+from rich.panel import Panel
 
-#The entry point menu and choices given to the player
+#This class allows the use of colored text, icons etc.
+console = Console()
+
+#Main funtion
 def main():
-    print_color("Welcome to this superduper awesome guessing game!", Colors.OKGREEN)
+    console.print("[green]Welcome to this superduper awesome guessing game![/green]")
     username = create_username()
-#A loop where player gets to choose different options
-    while True:
-        choice = display_menu()
 
+    #Start of the loop
+    while True:
+        
+        # Display the menu panel
+        console.print(
+            Panel(
+                "\n1. 🎮 [bold cyan]Play the superduper awesome Game[/bold cyan]"
+                "\n2. 🏆 [bold yellow]Highscores table[/bold yellow]"
+                "\n3. 📜 [bold blue]Bruh need help![/bold blue]"
+                "\n4. 🚪 [bold magenta]Exit here![/bold magenta]",
+                title="[bold cyan]Main Menu[/bold cyan]",
+                expand=False
+            )
+        )
+
+        # Prompts the user to choose
+        choice = Prompt.ask(
+            "[cyan]Choose one of the following options please![/cyan]",
+            choices=["1", "2", "3", "4"],
+            default="1"
+        )
+
+        # All the menu options as well as a warning if you type the wrong number
         if choice == "1":
-            superduperguess_game(username)
+            guessing_game(username)
         elif choice == "2":
-            show_scoreboard()
+            show_highscores()
         elif choice == "3":
-            print_color("Type a number between 1-50(easy), 1-75(medium) or 1-100(hard). You have 10 guesses in total. The fewer attempts, the higher your score!", Colors.OKBLUE)
+            console.print("[cyan]Help: Type a number between 1-50(easy), 1-75(medium) or 1-100(hard). You have 10 guesses in total. The fewer attempts, the higher your score! Scores depend on difficulty and time![/cyan]")
         elif choice == "4":
-            print_color("Goodbye!", Colors.WARNING)
+            console.print("[cyan]Goodbye![/cyan]")
             break
         else:
-            print_color("Invalid option. Please choose again.", Colors.FAIL) 
-            #If player chooses wrong number you get a warning and get to choose again
+            console.print("[red]Bruh learn to read and/or type.. Please choose again.[/red]")
 
 if __name__ == "__main__":
     main()
