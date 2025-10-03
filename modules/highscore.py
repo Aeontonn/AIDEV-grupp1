@@ -70,10 +70,14 @@ class HighScoreManager:
             # tilldela den rensade listan till _scores
             self._scores = cleaned
             
+            # se till att listan alltid är sorterad efter inläsning
+            self._sort_scores()
+            
         except Exception:
             # Felhantering: Om filen är korrupt eller oläsbar -> börja om på tom lista
             self._scores = []
             self._save()
+            self._sort_scores()
             
     def _save(self) -> None:
         '''
