@@ -61,7 +61,7 @@ VERSIONSHANTERING (Git/GitHub)
 - 0.1.1 Strukturerade allting om lite granna, istället för att ha modules/game, modules/menu etc. så lägger vi .py filerna direkt i modules mappen, jag addade oxå __init__.py i mapparna då det kan vara bra och ha för de som använder äldre versioner av python.
 - 0.2 Skapade main.py, menu.py och coloricons.py. Tog bort onödiga .md filer i alla mappar(krävs att man skapar dessa tomma filer för att kunna skapa mapp, då tomma mappar inte går att skapa i github utan kräver åtminstone en fil i dem, dont ask why.. XD)
 - 0.3 En grym upgrade, behöver inte menu och coloricons längre då allting ingår i nya externa bibliotek rich(pip install rich) och allting för menyn ingår i main.py
-- 0.3.1 Skapade requirements.txt med alla libraries och versionerna, förutom rich så har vi sounds om man nu vill ha det, men tinydb behövs för .json filerna i data mappen. Installera dessa i gitbash med pip install -r requirements.txt
+- 0.3.1 Skapade requirements.txt med alla libraries och versionerna, förutom rich så finns tinydb för det behövs för .json filerna i data mappen. Installera dessa i gitbash med pip install -r requirements.txt
 -
 -
 -
