@@ -60,6 +60,6 @@ VERSIONSHANTERING (Git/GitHub)
 - 0.1 Tillägg av mappar för olika moduler/utilities etc. Bättre struktur, lägg gärna in filerna i respektive mapp
 - 0.1.1 Strukturerade allting om lite granna, istället för att ha modules/game, modules/menu etc. så lägger vi .py filerna direkt i modules mappen, jag addade oxå __init__.py i mapparna då det kan vara bra och ha för de som använder äldre versioner av python.
 - 0.1.2 Gjorde ändringar på game.py. Fixade ett par fel som te.x att spelet krashar när man skriver någonting som inte är en siffra, och så fixade jag så att spelet inte fastnar i en loop om man gissar ett tal över 100 eller under 1. Lade också till en modul som enkelt kollar om man har skrivit ett nummer ller inte.
--
+- 0.1.3 Fixade så att game.py fungerar tillsammans med highscore.py
 -
 
