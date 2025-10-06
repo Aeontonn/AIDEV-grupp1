@@ -32,6 +32,24 @@ class HighScoreManager:
         n = max(0, int(n)) # n är alltid minst 0, så att vi inte får ett negativt index
         return list(self._scores[:n]) # plockar ut en lista från _scores. Returnerar en kopia (list(...)) så att originalet inte kan ändras utifrån.
     
+    def add_score(self, player: str, attempts: int) -> None:
+        '''
+        Lägg till ett resultat i highscore-listan och spara till fil.
+        Flera resultat per spelare tilllåts.
+        '''
+        
+        name = (str(player) if player is not None else '').strip() or 'Anonymous'
+        try:
+            tries = int(attempts)
+        except Exception:
+            tries = 0
+        if tries < 0:
+            tries = 0 # så att antal försök inte kan vara negativt
+        
+        self._scores.append({"player": name, "attempts": tries})
+        self._sort_scores() # håller listan kapad till keep_max och sorterad
+        self._save() # skriv till highscore.json
+    
     # ------------------------- Interna hjälpmetoder -------------------------
     # Nedanför: interna funktioner/metoder som används enbart inom klassen
     
