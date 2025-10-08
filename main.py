@@ -1,5 +1,5 @@
 #Importing all the necessary modules/functions/libraries that are needed for the program to work
-from modules.player import create_username
+from modules.player import Player
 from modules.game import Game
 from modules.highscore import HighScoreManager
 from rich.console import Console
@@ -12,7 +12,7 @@ console = Console()
 #Main funtion
 def main():
     console.print("[green]Welcome to this superduper awesome guessing game![/green]")
-    username = create_username()
+    username = Player()
 
     #Start of the loop
     while True:
