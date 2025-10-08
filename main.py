@@ -1,7 +1,7 @@
 #Importing all the necessary modules/functions/libraries that are needed for the program to work
-from main.modules.player import create_username
-from main.modules.game import Game
-from main.modules.highscore import HighScoreManager
+from modules.player import create_username
+from modules.game import Game
+from modules.highscore import HighScoreManager
 from rich.console import Console
 from rich.prompt import Prompt
 from rich.panel import Panel
