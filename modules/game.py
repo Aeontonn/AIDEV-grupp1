@@ -1,6 +1,12 @@
 import random
 from .get_number import get_number  # för om användaren skriver ett ord / bokstäver istället för en siffra
 from .highscore import HighScoreManager
+from rich.console import Console
+from rich.prompt import Prompt
+# from rich.text import Text
+from rich.panel import Panel
+
+console = Console()
 
 class Game:
     def __init__(self):
@@ -13,8 +19,9 @@ class Game:
     
             # för att hålla i highscore.
             x = 0
-            namn = input("Skriv ditt namn: ")
-            print("Gissa talet!\nDu ska nu försöka att gissa talet mellan 1 och 100. Lycka till!")
+            namn = Prompt.ask("[#fffb00]Skriv ditt namn[/#fffb00]")
+            console.print(Panel.fit("🎯 [bold cyan]Gissa talet![/bold cyan]\n"
+                    "Du ska nu försöka gissa talet från [green]1[/green] till [green]100[/green]. Lycka till!", border_style="green"))
     
             # för att få användarens tal.
             user_num = get_number("\nSkriv in ett tal: ")
@@ -27,7 +34,7 @@ class Game:
                     x = x + 1 # lägga på ett poäng för en gissning.
                     if x > 10: # om de har gissat fler än 10 gånger så bryts spelet. (kan höjas eller sänkas senare)
                         break
-                    print("Du valde ett tal över 100. Välj ett nytt tal mellan 1 och 100.")
+                    console.print("❌ [#ff6a00]Du valde ett tal över 100.[/#ff6a00] Välj ett nytt tal mellan 1 och 100.")
                     user_num = get_number("\nSkriv in ett nytt tal: ") # så att loopen inte fortsätter tills man förlorar om man gissar för högt nummer
     
                 # ifall de skriver att tal under 1.
@@ -35,7 +42,7 @@ class Game:
                     x = x + 1 # lägga på ett poäng för en gissning.
                     if x > 10: # om de har gissat fler än 10 gånger så bryts spelet. (kan höjas eller sänkas senare)
                         break
-                    print("Du valde ett tal under 1. Välj ett nytt tal mellan 1 och 100.")
+                    console.print("❌ [#ff6a00]Du valde ett tal under 1.[/#ff6a00] Välj ett nytt tal mellan 1 och 100.")
                     user_num = get_number("\nSkriv in ett nytt tal: ") # så att loopen inte fortsätter tills man förlorar om man gissar för lågt nummer
     
                 elif user_num < number:
@@ -43,8 +50,8 @@ class Game:
                     if x > 10:
                         break
                     elif abs(user_num - number) <= 4: # för att kolla om gissningen är nära.
-                        print("Du är nära men inte riktigt där!")
-                    print("Ditt tal är för litet.")
+                        console.print("[bold magenta]Du är nära men inte riktigt där![/bold magenta]")
+                    console.print("❌ [#ff0033]Ditt tal är för litet![/#ff0033]")
                     user_num = get_number("\nGissa ett större tal: ")
     
                 elif user_num > number:
@@ -52,8 +59,8 @@ class Game:
                     if x > 10:
                         break
                     elif abs(user_num - number) <= 4:
-                        print("Du är nära men inte riktigt där!")
-                    print("Ditt tal är för stort.")
+                        console.print("[bold magenta]Du är nära men inte riktigt där![/bold magenta]")
+                    console.print("❌ [#ff0033]Ditt tal är för stort![/#ff0033]")
                     user_num = get_number("\nGissa ett mindre tal: ")
                 else:
                     x = x + 1 
@@ -61,12 +68,14 @@ class Game:
                 
             # om användaren gissade 10 gånger så avslutas spelet och skriver ut det här meddelandet.
             if x >= 10:
-                print("\nGame Over! Du gissade 10 gånger. Försök Igen!")
+                console.print("\n💀 [#ff0033]Game Over![/#ff0033] Du gissade 10 gånger. Försök igen!")
     
             #  om användaren vinner och gissar talet under 10 gissningar så skrivs det här ut.
             else:
                 x += 1 # om spelaren gissar rätt på första försöket
-                print(f"Grattis {namn}! Du gissade rätt på {x} gånger!") # skriver också ut hur många gissningar det tog.
+                console.print(Panel.fit(f"🎉 Grattis [bold green]{namn}[/bold green]! "
+                        f"Du gissade rätt på [yellow]{x}[/yellow] gånger! 🏆",
+                        border_style="green")) # skriver också ut hur många gissningar det tog.
     
             # lägger till resultatet i highscore filen
             self.hs._scores.append({"player": namn, "attempts": x})
@@ -77,7 +86,7 @@ class Game:
             self.answer = self.answer.lower()
     
     
-        print("Tack för att du spelade!\n\nDina rekord är")
+        console.print("[bold cyan]Tack för att du spelade![/bold cyan]")
     
         avsluta = input("\nTryck enter för att avsluta spelet.")
     
