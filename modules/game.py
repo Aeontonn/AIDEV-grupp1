@@ -1,6 +1,7 @@
 import random
 from .get_number import get_number  # för om användaren skriver ett ord / bokstäver istället för en siffra
 from .highscore import HighScoreManager
+from .player import Player
 from rich.console import Console
 from rich.prompt import Prompt
 # from rich.text import Text
@@ -9,9 +10,10 @@ from rich.panel import Panel
 console = Console()
 
 class Game:
-    def __init__(self):
+    def __init__(self, Player, HighScoreManager):
         self.hs = HighScoreManager()
         self.answer = "ja"
+        self.player = Player()
 
     def run(self):
         while self.answer == "ja":

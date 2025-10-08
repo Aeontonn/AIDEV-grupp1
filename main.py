@@ -2,6 +2,7 @@
 from modules.player import Player
 from modules.game import Game
 from modules.highscore import HighScoreManager
+from ui.highscore_ui import show_highscore
 from rich.console import Console
 from rich.prompt import Prompt
 from rich.panel import Panel
@@ -39,9 +40,9 @@ def main():
 
         # All the menu options as well as a warning if you type the wrong number
         if choice == "1":
-            Game(player, highscore_manager).play()
+            Game(player, highscore_manager).run()
         elif choice == "2":
-            highscore_manager.show_highscore()
+            show_highscore()
         elif choice == "3":
             console.print("[cyan]Help: Type a number between 1-50(easy), 1-75(medium) or 1-100(hard). You have 10 guesses in total. The fewer attempts, the higher your score! Scores depend on difficulty and time![/cyan]")
         elif choice == "4":
