@@ -12,7 +12,8 @@ console = Console()
 #Main funtion
 def main():
     console.print("[green]Welcome to this superduper awesome guessing game![/green]")
-    username = Player()
+    player = Player()
+    highscore_manager = HighScoreManager()
 
     #Start of the loop
     while True:
@@ -38,9 +39,9 @@ def main():
 
         # All the menu options as well as a warning if you type the wrong number
         if choice == "1":
-            Game(username)
+            Game(player, highscore_manager).play()
         elif choice == "2":
-            HighScoreManager()
+            highscore_manager.show_highscore()
         elif choice == "3":
             console.print("[cyan]Help: Type a number between 1-50(easy), 1-75(medium) or 1-100(hard). You have 10 guesses in total. The fewer attempts, the higher your score! Scores depend on difficulty and time![/cyan]")
         elif choice == "4":

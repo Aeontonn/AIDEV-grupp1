@@ -9,7 +9,7 @@ class Player:
         """
         Create or load player's username from /data/user.txt
         """
-        data_dir = Path(file).resolve().parent.parent / "data"
+        data_dir = Path(__file__).resolve().parent.parent / "data"
         data_dir.mkdir(parents=True, exist_ok=True)
 
         self.username_file = data_dir / "user.txt"
