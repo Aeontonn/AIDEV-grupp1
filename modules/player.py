@@ -5,7 +5,7 @@ from rich.prompt import Prompt
 console = Console()
 
 class Player:
-    def init(self):
+    def __init__(self):
         """
         Create or load player's username from /data/user.txt
         """
@@ -30,5 +30,5 @@ class Player:
         console.print(f"[green]Username saved as {username}![/green]")
         return username
 
-    def str(self):
+    def __str__(self):
         return self.name
