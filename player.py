@@ -1,9 +1,10 @@
 import abc
 import json
-import os
+from pathlib import path
+
 
 # Sökväg till filen där användardata lagras (fixad version)
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # mappen där player.py ligger
+BASE_DIR = Path(__file__).resolve().parent
 DATA_DIR = os.path.join(BASE_DIR, "data")
 USER_FILE = os.path.join(DATA_DIR, "users.json")
 
