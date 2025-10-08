@@ -1,21 +1,34 @@
+from pathlib import Path
 from rich.console import Console
 from rich.prompt import Prompt
-from modules.highscore import HighScoreManager
 
 console = Console()
 
-
 class Player:
     def init(self):
-        self.username = None
+        """
+        Create or load player's username from /data/user.txt
+        """
+        data_dir = Path(file).resolve().parent.parent / "data"
+        data_dir.mkdir(parents=True, exist_ok=True)
 
-    def create_username(self):
-        username = Prompt.ask("Enter a unique username 👤").strip()
-        highscores = HighScoreManager()
-        existing_usernames = [s["player"] for s in highscores.top(1000)]
+        self.username_file = data_dir / "user.txt"
+        self.name = self._get_username()
 
-        if username in existing_usernames:
-            console.print("Username already exists. Try again.", style="bold red")
-        else:
-            self.username = username
-            console.print(f"Welcome, {username}! 🎉", style="bold green")
+    def _get_username(self) -> str:
+        """
+        Load existing username, or prompt to create a new one.
+        """
+        if self.username_file.exists():
+            username = self.username_file.read_text(encoding="utf-8").strip()
+            if username:
+                console.print(f"[green]Welcome back, {username}! 👋[/green]")
+                return username
+
+        username = Prompt.ask("[cyan]Enter your username[/cyan]").strip() or "Player"
+        self.username_file.write_text(username, encoding="utf-8")
+        console.print(f"[green]Username saved as {username}![/green]")
+        return username
+
+    def str(self):
+        return self.name
