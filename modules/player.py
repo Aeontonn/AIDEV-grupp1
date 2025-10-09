@@ -1,18 +1,19 @@
 from pathlib import Path
 from rich.console import Console
 from rich.prompt import Prompt
+import json
 
 console = Console()
 
 class Player:
     def __init__(self):
         """
-        Create or load player's username from /data/user.txt
+        Create or load player's username from /data/users.json
         """
         data_dir = Path(__file__).resolve().parent.parent / "data"
         data_dir.mkdir(parents=True, exist_ok=True)
 
-        self.username_file = data_dir / "user.txt"
+        self.username_file = data_dir / "users.json"
         self.name = self._get_username()
 
     def _get_username(self) -> str:
