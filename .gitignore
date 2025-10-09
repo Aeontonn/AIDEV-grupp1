@@ -212,3 +212,4 @@ __marimo__/
 # data files
 /data/highscore.json
 /data/highscores.json
+/data/users.json
