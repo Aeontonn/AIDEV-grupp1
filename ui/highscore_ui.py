@@ -24,7 +24,7 @@ def show_highscore(n: int = 5, console: Console | None = None) -> None:
         expand=False
     )
     table.add_column('#', justify='right', style='dim')
-    table.add_column('spelare', justify='left')
+    table.add_column('Spelare', justify='left')
     table.add_column('Försök', justify='right')
     
     for i, item in enumerate(top_scores, start=1):
