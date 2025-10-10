@@ -83,11 +83,9 @@ class Game:
             self.hs._sort_scores()
             self.hs._save()
     
-            self.answer = input("\nVill du spela igen? Svara 'Ja' eller 'Nej'\n")
+            self.answer = input("\nVill du spela igen? Svara 'Ja' eller om du vill gå tillbaka till menyn tryck Enter\n")
             self.answer = self.answer.lower()
     
     
         console.print("[bold cyan]Tack för att du spelade![/bold cyan]")
-    
-        avsluta = input("\nTryck enter för att avsluta spelet.")
     
