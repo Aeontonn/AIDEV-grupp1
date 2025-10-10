@@ -10,10 +10,10 @@ from rich.panel import Panel
 console = Console()
 
 class Game:
-    def __init__(self, Player, HighScoreManager):
-        self.hs = HighScoreManager()
+    def __init__(self, player, highscore_manager):
+        self.hs = highscore_manager
         self.answer = "ja"
-        self.player = Player()
+        self.player = player
 
     def run(self):
         while self.answer == "ja":
