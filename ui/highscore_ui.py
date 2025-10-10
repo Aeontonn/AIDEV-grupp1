@@ -45,5 +45,5 @@ def show_highscore(n: int = 5, console: Console | None = None) -> None:
             Text(name, style=('bold ' + color) if i <= 3 else 'white'),
             Text(str(attempts), style=color if i <= 3 else 'cyan'),
         )
-        
+           
     console.print(table)

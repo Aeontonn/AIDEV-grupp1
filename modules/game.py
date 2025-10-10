@@ -10,10 +10,10 @@ from rich.panel import Panel
 console = Console()
 
 class Game:
-    def __init__(self, Player, HighScoreManager):
-        self.hs = HighScoreManager()
+    def __init__(self, player, highscore_manager):
+        self.hs = highscore_manager
         self.answer = "ja"
-        self.player = Player()
+        self.player = player
 
     def run(self):
         while self.answer == "ja":
@@ -21,7 +21,6 @@ class Game:
     
             # för att hålla i highscore.
             x = 0
-            namn = Prompt.ask("[#fffb00]Skriv ditt namn[/#fffb00]")
             console.print(Panel.fit("🎯 [bold cyan]Gissa talet![/bold cyan]\n"
                     "Du ska nu försöka gissa talet från [green]1[/green] till [green]100[/green]. Lycka till!", border_style="green"))
     
@@ -75,20 +74,18 @@ class Game:
             #  om användaren vinner och gissar talet under 10 gissningar så skrivs det här ut.
             else:
                 x += 1 # om spelaren gissar rätt på första försöket
-                console.print(Panel.fit(f"🎉 Grattis [bold green]{namn}[/bold green]! "
+                console.print(Panel.fit(f"🎉 Grattis [bold green]{self.player.name}[/bold green]! "
                         f"Du gissade rätt på [yellow]{x}[/yellow] gånger! 🏆",
                         border_style="green")) # skriver också ut hur många gissningar det tog.
     
             # lägger till resultatet i highscore filen
-            self.hs._scores.append({"player": namn, "attempts": x})
+            self.hs._scores.append({"player": self.player.name, "attempts": x})
             self.hs._sort_scores()
             self.hs._save()
     
-            self.answer = input("\nVill du spela igen? Svara 'Ja' eller 'Nej'\n")
+            self.answer = input("\nVill du spela igen? Svara 'Ja' eller om du vill gå tillbaka till menyn tryck Enter\n")
             self.answer = self.answer.lower()
     
     
         console.print("[bold cyan]Tack för att du spelade![/bold cyan]")
-    
-        avsluta = input("\nTryck enter för att avsluta spelet.")
     
