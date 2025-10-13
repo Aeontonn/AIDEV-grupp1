@@ -1,7 +1,8 @@
 #Importing all the necessary modules/functions/libraries that are needed for the program to work
-from main.modules.users import create_username
-from main.modules.game import guessing_game
-from main.modules.scores import show_highscores
+from modules.player import Player
+from modules.game import Game
+from modules.highscore import HighScoreManager
+from ui.highscore_ui import show_highscore
 from rich.console import Console
 from rich.prompt import Prompt
 from rich.panel import Panel
@@ -12,7 +13,8 @@ console = Console()
 #Main funtion
 def main():
     console.print("[green]Welcome to this superduper awesome guessing game![/green]")
-    username = create_username()
+    highscore_manager = HighScoreManager()
+    player = None
 
     #Start of the loop
     while True:
@@ -38,9 +40,12 @@ def main():
 
         # All the menu options as well as a warning if you type the wrong number
         if choice == "1":
-            guessing_game(username)
+            if player is None:
+                player = Player()
+            Game(player, highscore_manager).run()
         elif choice == "2":
-            show_highscores()
+            show_highscore()
+            print("\n\n")
         elif choice == "3":
             console.print("[cyan]Help: Type a number between 1-50(easy), 1-75(medium) or 1-100(hard). You have 10 guesses in total. The fewer attempts, the higher your score! Scores depend on difficulty and time![/cyan]")
         elif choice == "4":
