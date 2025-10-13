@@ -66,4 +66,5 @@ VERSIONSHANTERING (Git/GitHub)
 - 0.3 En grym upgrade, behöver inte menu och coloricons längre då allting ingår i nya externa bibliotek rich(pip install rich) och allting för menyn ingår i main.py
 - 0.3.1 Skapade requirements.txt med alla libraries och versionerna, förutom rich så finns tinydb för det behövs för .json filerna i data mappen. Installera dessa i gitbash med pip install -r requirements.txt
 - 0.4 Skapade Test mapp, där alla lägger sina test filer, dvs med pytest
+- 1.0 Release is here!
 
