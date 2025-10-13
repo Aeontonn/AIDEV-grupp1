@@ -4,10 +4,10 @@
 # Filplacering: /data/highscore.json
 # ------------------------------------------------------------
 
-from __future__ import annotations
+from __future__ import annotations # gör det enklare att skriva typer även om den defineras senare. Ex kan man skriva -> Person: istället för -> "Person":
 
-from pathlib import Path
-import json
+from pathlib import Path # Path: enkelt och säkert sätt att jobba med fil- och mappvägar.
+import json # för att läsa/skriva data i JSON-format.
 
 class HighScoreManager:
     def __init__(self, path: Path | None = None, keep_max: int=50) -> None:
