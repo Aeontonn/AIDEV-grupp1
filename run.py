@@ -1,7 +1,5 @@
-# för att testa att köra olika filer
-from modules.game import Game
-from modules.player import Player
-from modules.highscore import HighScoreManager
+#Hämtar allt från main för att starta spelet
+from main import main
 
 if __name__ == "__main__":
-  Game(Player, HighScoreManager).run()
+    main()
