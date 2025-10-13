@@ -28,6 +28,11 @@ def show_highscore(n: int = 5, console: Console | None = None) -> None:
     hs = HighScoreManager()
     top_scores = hs.top(n)
     
+    # Avbryt om det inte finns några resultat
+    if not top_scores:
+        console.print('Inga resultat ännu. Spela först! ✨')
+        return
+    
     # UI för tabellen (ram, title, stil m.m.)
     table = Table(
         title='🏆 Highscore',
