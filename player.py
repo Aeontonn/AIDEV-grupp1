@@ -1,6 +1,6 @@
 import abc
 import json
-from pathlib import path
+from pathlib import Path
 
 
 # Sökväg till filen där användardata lagras (fixad version)
