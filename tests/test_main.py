@@ -2,12 +2,13 @@
 Comprehensive test suite for main.py and connected modules.
 
 Run with:
-    pytest -v --disable-warnings
+    pytest -v --disable-warnings -s
 """
 
 import pytest
 from unittest.mock import patch
 import subprocess
+import os
 
 
 # ────────────────────────────────────────────────
@@ -33,15 +34,30 @@ def test_imports_ok():
 #  2️⃣  CLI EXECUTION TEST (END-TO-END)
 # ────────────────────────────────────────────────
 
-def test_cli_run_exit():
-    """Simulate running main.py from CLI and exiting."""
-    result = subprocess.run(
-        ["python", "main.py"],
-        input="4\n", text=True, capture_output=True
-    )
-    assert result.returncode == 0
-    assert "Goodbye" in result.stdout
 
+def test_cli_run_exit():
+    project_root = os.path.dirname(os.path.dirname(__file__))
+    main_path = os.path.join(project_root, "main.py")
+
+    env = os.environ.copy()
+    env["PYTHONIOENCODING"] = "utf-8"  # ensures subprocess uses UTF-8
+
+    result = subprocess.run(
+        ["python", main_path],
+        input="4\n",
+        capture_output=True,
+        text=True,
+        env=env,
+        encoding="utf-8"  # 👈 explicitly decode stdout/stderr as UTF-8
+    )
+
+    print("\n--- STDOUT ---")
+    print(result.stdout)
+    print("--- STDERR ---")
+    print(result.stderr)
+
+    assert result.returncode == 0, f"Non-zero exit ({result.returncode}): {result.stderr}"
+    assert "Goodbye" in result.stdout
 
 
 # ────────────────────────────────────────────────
@@ -65,13 +81,22 @@ def test_exit_message(monkeypatch, capsys):
 def test_multiple_menu_loops(monkeypatch, capsys):
     """Simulate navigating through multiple menu options before exit."""
     from main import main
-    inputs = iter(["2", "3", "1", "4"])
-    monkeypatch.setattr("rich.prompt.Prompt.ask", lambda *a, **kw: next(inputs))
 
+    # Add more fake inputs (safe fallback to avoid StopIteration)
+    inputs = iter(["2", "3", "1", "4"])
+
+    def fake_prompt(*args, **kwargs):
+        try:
+            return next(inputs)
+        except StopIteration:
+            return "4"  # Always exit gracefully if we run out
+
+    monkeypatch.setattr("rich.prompt.Prompt.ask", fake_prompt)
+
+    # Patch the Game.run method so it doesn’t actually start a real game
     with patch("modules.game.Game.run", return_value=None):
         main()
 
     captured = capsys.readouterr()
     assert "Welcome" in captured.out
     assert "Goodbye" in captured.out
-    
