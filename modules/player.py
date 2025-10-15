@@ -1,4 +1,5 @@
 from pathlib import Path
+from .clear import clear
 from rich.console import Console
 from rich.prompt import Prompt
 from rich.panel import Panel
@@ -65,25 +66,7 @@ class Player:
             
         console.print(f"[green]Ny spelare skapad: {new_name}![/green]")
         return new_name
+    clear()
     
     def __str__(self):
         return self.name
-
-
-#    def _get_username(self) -> str:
-#        """
-#        Load existing username, or prompt to create a new one.
-#        """
-#        if self.username_file.exists():
-#            username = self.username_file.read_text(encoding="utf-8").strip()
-#            if username:
-#                console.print(f"[green]Welcome back, {username}! 👋[/green]")
-#                return username
-#
-#        username = Prompt.ask("[cyan]Enter your username[/cyan]").strip() or "Player"
-#        self.username_file.write_text(username, encoding="utf-8")
-#        console.print(f"[green]Username saved as {username}![/green]")
-#        return username
-#
-#    def __str__(self):
-#        return self.name
