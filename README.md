@@ -164,17 +164,13 @@ pip install -r requirements.txt
 
 ---
 
-## Exempel (terminal)
+## 📸 Exempel (terminal)
 
-> Klistra in skärmdumpar här – t.ex. `docs/img/terminal-1.png`
+![Startmeny](docs/img/main.png)
 
-```text
-![start-meny](/docs/img/main.png)
+![Exempel på spelet](docs/img/game.png)
 
-![Exempel på spelet](/docs/img/game.png)
-
-![Highscore-tabell](/docs/img/highscore.png)
-```
+![Highscore-tabell](docs/img/highscore.png)
 
 ---
 
