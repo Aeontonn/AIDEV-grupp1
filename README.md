@@ -8,12 +8,12 @@
 </p>
 
 ```
- ██████╗ ██╗███████╗███████╗ █████╗     ███╗   ██╗██╗   ██╗███╗   ███╗██████╗ ███████╗████████╗██╗██╗██╗
-██╔════╝ ██║██╔════╝██╔════╝██╔══██╗    ████╗  ██║██║   ██║████╗ ████║██╔══██╗██╔════╝╚══██╔══╝██║██║██║
-██║  ███╗██║███████╗███████╗███████║    ██╔██╗ ██║██║   ██║██╔████╔██║██████╔╝█████╗     ██║   ██║██║██║
-██║   ██║██║╚════██║╚════██║██╔══██║    ██║╚██╗██║██║   ██║██║╚██╔╝██║██╔══██╗██╔══╝     ██║   ╚═╝╚═╝╚═╝ 
-╚██████╔╝██║███████╗███████║██║  ██║    ██║ ╚████║╚██████╔╝██║ ╚═╝ ██║██║  ██║███████╗   ██║   ██╗██╗██╗
- ╚═════╝ ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝    ╚═╝  ╚═══╝ ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝╚═╝╚═╝ 
+ ██████╗ ██╗███████╗███████╗ █████╗     ███╗   ██╗██╗   ██╗███╗   ███╗██████╗ ███████╗████████╗██╗
+██╔════╝ ██║██╔════╝██╔════╝██╔══██╗    ████╗  ██║██║   ██║████╗ ████║██╔══██╗██╔════╝╚══██╔══╝██║
+██║  ███╗██║███████╗███████╗███████║    ██╔██╗ ██║██║   ██║██╔████╔██║██████╔╝█████╗     ██║   ██║
+██║   ██║██║╚════██║╚════██║██╔══██║    ██║╚██╗██║██║   ██║██║╚██╔╝██║██╔══██╗██╔══╝     ██║   ╚═╝
+╚██████╔╝██║███████╗███████║██║  ██║    ██║ ╚████║╚██████╔╝██║ ╚═╝ ██║██║  ██║███████╗   ██║   ██╗
+ ╚═════╝ ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝    ╚═╝  ╚═══╝ ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝ 
 ```
 
 Ett roligt **textbaserat nummer-gissarspel** i Python. Gissa rätt tal på så få försök som möjligt! Spelet ger ledtrådar och sparar dina resultat i en **highscore-tabell** kopplad till din spelare.
@@ -24,6 +24,7 @@ Ett roligt **textbaserat nummer-gissarspel** i Python. Gissa rätt tal på så f
 
 * [Funktioner](#funktioner)
 * [Teknisk översikt](#teknisk-översikt)
+* [Bibliotek](#Bibliotek)
 * [Kom igång – installation](#kom-igång--installation)
 
   * [Windows (PowerShell)](#windows-powershell)
@@ -49,6 +50,8 @@ Ett roligt **textbaserat nummer-gissarspel** i Python. Gissa rätt tal på så f
 * 💾 Data lagras i JSON-filer under `data/`
 * 🧩 Ren objektorienterad design (klasser & moduler)
 
+---
+
 ## Teknisk översikt
 
 **Kodspråk:** Python (körs via terminal/CLI)
@@ -60,13 +63,30 @@ Ett roligt **textbaserat nummer-gissarspel** i Python. Gissa rätt tal på så f
 * `modules/highscore.py` – highscore-hantering
 * `modules/get_number.py` – felhantering/validering av gissningar
 * `modules/clear.py` – rensa terminalen (OS-anpassat)
+* `~/main.py` - start-meny samt länkar ihop allt
 
 **Datafiler:**
 
 * `data/highscore.json` – toplista
 * `data/users.json` – registrerade spelare
 
-> 📦 Startfil: **`run.py`** (länkar ihop allt och startar spelet)
+> 📦 Startfil: **`run.py`** (startar spelet)
+
+---
+
+## 📚 Bibliotek
+
+**Standardbibliotek:**
+
+* `random` - används för att slumpa fram det hemliga talet
+* `json` - sparar och läser highscore-data
+* `os` - används för terminalrensning och filvägar
+* `__future__` - för framåtkompatibilitet mellan Python-versioner
+* `pathlib` - hanterar fil- och sökvägar på ett portabelt sätt
+
+**Externa bibliotek:**
+
+* `rich` - används för en mer färgglad och tydlig CLI-upplevelse
 
 ---
 
@@ -74,7 +94,7 @@ Ett roligt **textbaserat nummer-gissarspel** i Python. Gissa rätt tal på så f
 
 Förutsätter att **Python 3.10+** är installerat. Rekommenderat är att använda en **virtuell miljö** (`venv`).
 
-### Windows (PowerShell)
+### Windows
 
 ```powershell
 # Klona projektet
@@ -110,7 +130,7 @@ pip install -r requirements.txt
 
 **Starta spelet** (välj kommando som passar din miljö):
 
-* Windows (PowerShell):
+* Windows:
 
   ```powershell
   py run.py
@@ -141,10 +161,10 @@ pip install -r requirements.txt
     │   ├─ highscore.json
     │   └─ users.json
     ├─ /docs/
-    │    ├─/img/
-    │    │    ├─ game.png
-    │    │    ├─ highscore.png
-    │    │    └─ main.png
+    │    └─/img/
+    │        ├─ game.png
+    │        ├─ highscore.png
+    │        └─ main.png
     ├─ /modules/
     │   ├─ __init__.py
     │   ├─ clear.py
@@ -195,7 +215,7 @@ pytest -q
 | Namn             | GitHub                                                     | Ansvar                     |
 | ---------------- | ---------------------------------------------------------- | -------------------------- |
 | Constantine      | [@AeolianOpus](https://github.com/AeolianOpus)             | `main.py`, `player.py`, bugg-fixar      |
-| Nicklas        | [@nicklasskoglund](https://github.com/nicklasskoglund)     | `highscore.py`, `highscore_ui.py`, bugg-fixar |
+| Nicklas        | [@nicklasskoglund](https://github.com/nicklasskoglund)     | `highscore.py`, `highscore_ui.py`, `README.md`,  bugg-fixar |
 | Ali              | [@aliizarifiii-cell](https://github.com/aliizarifiii-cell) | `player.py`, bugg-fixar    |
 | Anton            | [@Aeontonn](https://github.com/Aeontonn)                   | `game.py`, `get_number.py`, `clear.py`, bugg-fixar      |
 
