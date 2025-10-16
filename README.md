@@ -161,7 +161,7 @@ pip install -r requirements.txt
     │   ├─ highscore.json
     │   └─ users.json
     ├─ /docs/
-    │    └─/img/
+    │    └─ /img/
     │        ├─ game.png
     │        ├─ highscore.png
     │        └─ main.png
