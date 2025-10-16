@@ -169,7 +169,11 @@ pip install -r requirements.txt
 > Klistra in skärmdumpar här – t.ex. `docs/img/terminal-1.png`
 
 ```text
+![start-meny](docs/img/main.png)
 
+![Exempel på spelet](docs/img/game.png)
+
+![Highscore-tabell](docs/img/highscore.png)
 ```
 
 ---
